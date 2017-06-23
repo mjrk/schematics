@@ -41,12 +41,12 @@ class Foo(Model):
     nfb    = PolyModelType([B, C])  # no fallback since A not present
     cfn    = PolyModelType([B, C], claim_function=claim_func, strict=False)
 
-
-def test_subclass_registry():
-
-    assert A._subclasses == [Aaa, B, C]
-    assert B._subclasses == [C]
-    assert C._subclasses == []
+# subclass registering disabled
+# def test_subclass_registry():
+#
+#     assert A._subclasses == [Aaa, B, C]
+#     assert B._subclasses == [C]
+#     assert C._subclasses == []
 
 def test_inheritance_based_polymorphic(): # base
 
@@ -115,4 +115,3 @@ def test_refuse_unrelated_export():
         foo = Foo()
         foo.strict = Aaa()
         foo.to_primitive()
-

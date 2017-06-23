@@ -358,9 +358,10 @@ class PolyModelType(MultiType):
             chosen_class = self.claim_function(self, data)
         else:
             candidates = self.model_classes
-            if self.allow_subclasses:
-                candidates = itertools.chain.from_iterable(
-                                 ([m] + m._subclasses for m in candidates))
+            # subclasses registering disabled
+            # if self.allow_subclasses:
+            #     candidates = itertools.chain.from_iterable(
+            #                      ([m] + m._subclasses for m in candidates))
             fallback = None
             matching_classes = []
             for cls in candidates:
